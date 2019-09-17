@@ -1,5 +1,5 @@
 #import <React/RCTViewManager.h>
-#import  RNAppleAuthentication RNAppleAuthenticationButton.h>
+#import RNAppleAuthentication RNAppleAuthenticationButton.h>
 
 @import AuthenticationServices;
 
@@ -11,7 +11,7 @@
 \
 @implementation RNAppleAuthenticationButton ## type ## style ## ViewManager \
 \
-  UM_REGISTER_MODULE(); \
+  RCT_EXPORT_MODULE(); \
 \
   + (const NSString *)exportedModuleName { return @#module_name; } \
 \

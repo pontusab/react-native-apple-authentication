@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  ExpoAppleAuthenticationButtonSignInWhite,
-  ExpoAppleAuthenticationButtonSignInWhiteOutline,
-  ExpoAppleAuthenticationButtonSignInBlack,
-  ExpoAppleAuthenticationButtonContinueWhite,
-  ExpoAppleAuthenticationButtonContinueWhiteOutline,
-  ExpoAppleAuthenticationButtonContinueBlack
-} from './ExpoAppleAuthenticationButton';
+  RNAppleAuthenticationButtonSignInWhite,
+  RNAppleAuthenticationButtonSignInWhiteOutline,
+  RNAppleAuthenticationButtonSignInBlack,
+  RNAppleAuthenticationButtonContinueWhite,
+  RNAppleAuthenticationButtonContinueWhiteOutline,
+  RNAppleAuthenticationButtonContinueBlack
+} from './RNAppleAuthenticationButton';
 
 import {
   AppleAuthenticationButtonProps,
@@ -37,10 +37,10 @@ import {
 const AppleAuthenticationButton: React.FunctionComponent<
   AppleAuthenticationButtonProps
 > = props => {
-  if (!ExpoAppleAuthenticationButtonSignInWhite) {
-    if (__DEV__) {
-      console.warn("'AppleAuthenticationButton' is not available.");
-    }
+  if (!RNAppleAuthenticationButtonSignInWhite) {
+    // if (__DEV__) {
+    //   console.warn("'AppleAuthenticationButton' is not available.");
+    // }
     return null;
   }
 
@@ -63,14 +63,14 @@ const ButtonComponents: {
   [type: number]: { [style: number]: React.ElementType };
 } = {
   [AppleAuthenticationButtonType.SIGN_IN]: {
-    [AppleAuthenticationButtonStyle.WHITE]: ExpoAppleAuthenticationButtonSignInWhite,
-    [AppleAuthenticationButtonStyle.WHITE_OUTLINE]: ExpoAppleAuthenticationButtonSignInWhiteOutline,
-    [AppleAuthenticationButtonStyle.BLACK]: ExpoAppleAuthenticationButtonSignInBlack
+    [AppleAuthenticationButtonStyle.WHITE]: RNAppleAuthenticationButtonSignInWhite,
+    [AppleAuthenticationButtonStyle.WHITE_OUTLINE]: RNAppleAuthenticationButtonSignInWhiteOutline,
+    [AppleAuthenticationButtonStyle.BLACK]: RNAppleAuthenticationButtonSignInBlack
   },
   [AppleAuthenticationButtonType.CONTINUE]: {
-    [AppleAuthenticationButtonStyle.WHITE]: ExpoAppleAuthenticationButtonContinueWhite,
-    [AppleAuthenticationButtonStyle.WHITE_OUTLINE]: ExpoAppleAuthenticationButtonContinueWhiteOutline,
-    [AppleAuthenticationButtonStyle.BLACK]: ExpoAppleAuthenticationButtonContinueBlack
+    [AppleAuthenticationButtonStyle.WHITE]: RNAppleAuthenticationButtonContinueWhite,
+    [AppleAuthenticationButtonStyle.WHITE_OUTLINE]: RNAppleAuthenticationButtonContinueWhiteOutline,
+    [AppleAuthenticationButtonStyle.BLACK]: RNAppleAuthenticationButtonContinueBlack
   }
 };
 

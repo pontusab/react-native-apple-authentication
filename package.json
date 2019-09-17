@@ -1,4 +1,3 @@
-
 {
   "name": "react-native-apple-authentication",
   "author": "Pontus Abrahamsson",
@@ -18,5 +17,8 @@
   "devDependencies": {
     "react-native": "^0.60.5",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
   }
 }

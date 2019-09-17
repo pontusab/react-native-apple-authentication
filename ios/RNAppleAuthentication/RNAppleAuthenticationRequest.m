@@ -1,9 +1,6 @@
-
 #import <RNAppleAuthentication/RNAppleAuthenticationRequest.h>
 #import <RNAppleAuthentication/RNAppleAuthenticationMappings.h>
-
-// #import <UMCore/UMDefines.h>
-
+ 
 @interface RNAppleAuthenticationRequest ()
 
 @property (nonatomic, strong, nonnull) NSDictionary *options;
@@ -23,6 +20,8 @@
   }
   return self;
 }
+
+#define RNNullIfNil(value) (value ?: [NSNull null])
 
 - (void)performOperation:(ASAuthorizationProviderAuthorizationOperation)operation
 {
@@ -78,13 +77,13 @@
   }
 
   NSDictionary *response = @{
-                         @"fullName": UMNullIfNil(fullName),
-                         @"email": UMNullIfNil(credential.email),
+                         @"fullName": RNNullIfNil(fullName),
+                         @"email": RNNullIfNil(credential.email),
                          @"user": credential.user,
                          @"realUserStatus": [RNAppleAuthenticationMappings exportRealUserStatus:credential.realUserStatus],
-                         @"state": UMNullIfNil(credential.state),
-                         @"authorizationCode": UMNullIfNil(authorizationCode),
-                         @"identityToken": UMNullIfNil(identityToken),
+                         @"state": RNNullIfNil(credential.state),
+                         @"authorizationCode": RNNullIfNil(authorizationCode),
+                         @"identityToken": RNNullIfNil(identityToken),
                          };
 
   if (_callback) {

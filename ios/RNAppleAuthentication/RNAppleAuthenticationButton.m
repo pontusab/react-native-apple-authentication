@@ -1,7 +1,7 @@
 
-#import <RRNAppleAuthentication/RRNAppleAuthenticationButton.h>
+#import <RNAppleAuthentication/RNAppleAuthenticationButton.h>
 
-@implementation RRNAppleAuthenticationButton
+@implementation RNAppleAuthenticationButton
 
 -(instancetype)initWithAuthorizationButtonType:(ASAuthorizationAppleIDButtonType)type
                       authorizationButtonStyle:(ASAuthorizationAppleIDButtonStyle)style
