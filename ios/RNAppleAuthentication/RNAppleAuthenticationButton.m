@@ -15,8 +15,8 @@
   return self;
 }
 
-- (void)onDidPress {
-  _onButtonPress(nil);
-}
+// - (void)onDidPress {
+//   _onButtonPress(nil);
+// }
 
 @end

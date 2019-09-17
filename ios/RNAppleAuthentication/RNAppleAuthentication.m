@@ -12,7 +12,7 @@ static NSString *const RNAppleIDCredentialRevokedEvent = @"appleIdCredentialRevo
 
 @implementation RNAppleAuthentication
 
-RCT_EXPORT_MODULE(ExpoAppleAuthentication);
+RCT_EXPORT_MODULE(RNAppleAuthentication);
 
 - (void)setModuleRegistry:(UMModuleRegistry *)moduleRegistry
 {
