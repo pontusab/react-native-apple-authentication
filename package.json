@@ -1,0 +1,22 @@
+
+{
+  "name": "react-native-apple-authentication",
+  "author": "Pontus Abrahamsson",
+  "version": "1.0.0",
+  "description": "SignIn With Apple",
+  "homepage": "https://github.com/pontusab/react-native-apple-authentication",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "apple-authentication"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "react-native": "^0.60.5",
+    "typescript": "^3.5.3"
+  }
+}
