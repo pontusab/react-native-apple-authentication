@@ -6,7 +6,7 @@ static NSString *const RNAppleIDCredentialRevokedEvent = @"appleIdCredentialRevo
 
 @interface RNAppleAuthentication ()
 
-@property (nonatomic, weak) UMModuleRegistry *moduleRegistry;
+// @property (nonatomic, weak) UMModuleRegistry *moduleRegistry;
 
 @end
 
@@ -14,44 +14,44 @@ static NSString *const RNAppleIDCredentialRevokedEvent = @"appleIdCredentialRevo
 
 RCT_EXPORT_MODULE(RNAppleAuthentication);
 
-- (void)setModuleRegistry:(UMModuleRegistry *)moduleRegistry
-{
-  _moduleRegistry = moduleRegistry;
-}
+// - (void)setModuleRegistry:(UMModuleRegistry *)moduleRegistry
+// {
+//   _moduleRegistry = moduleRegistry;
+// }
 
 - (NSArray<NSString *> *)supportedEvents
 {
   return @[RNAppleIDCredentialRevokedEvent];
 }
 
-- (void)startObserving
-{
-  if (@available(iOS 13.0, *)) {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didRevokeCredential:)
-                                                 name:ASAuthorizationAppleIDProviderCredentialRevokedNotification
-                                               object:nil];
-  }
-}
+// - (void)startObserving
+// {
+//   if (@available(iOS 13.0, *)) {
+//     [[NSNotificationCenter defaultCenter] addObserver:self
+//                                              selector:@selector(didRevokeCredential:)
+//                                                  name:ASAuthorizationAppleIDProviderCredentialRevokedNotification
+//                                                object:nil];
+//   }
+// }
 
-- (void)stopObserving
-{
-  if (@available(iOS 13.0, *)) {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:ASAuthorizationAppleIDProviderCredentialRevokedNotification
-                                                  object:nil];
-  }
-}
+// - (void)stopObserving
+// {
+//   if (@available(iOS 13.0, *)) {
+//     [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                     name:ASAuthorizationAppleIDProviderCredentialRevokedNotification
+//                                                   object:nil];
+//   }
+// }
 
-- (void)didRevokeCredential:(NSNotification *)notification
-{
-  id<UMEventEmitterService> eventEmitter = [_moduleRegistry getModuleImplementingProtocol:@protocol(UMEventEmitterService)];
-  [eventEmitter sendEventWithName:RNAppleIDCredentialRevokedEvent body:@{}];
-}
+// - (void)didRevokeCredential:(NSNotification *)notification
+// {
+//   id<UMEventEmitterService> eventEmitter = [_moduleRegistry getModuleImplementingProtocol:@protocol(UMEventEmitterService)];
+//   [eventEmitter sendEventWithName:RNAppleIDCredentialRevokedEvent body:@{}];
+// }
 
-RCT_EXPORT_METHOD(isAvailableAsync,
-                    isAvailableAsync:(UMPromiseResolveBlock)resolve
-                            rejecter:(UMPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(
+                    isAvailableAsync:(RCTPromiseResolveBlock)resolve
+                            rejecter:(RCTPromiseRejectBlock)reject)
 {
   if (@available(iOS 13.0, *)) {
     resolve(@(YES));
@@ -60,10 +60,10 @@ RCT_EXPORT_METHOD(isAvailableAsync,
   }
 }
 
-RCT_EXPORT_METHOD(requestAsync,
+RCT_EXPORT_METHOD(
                     requestAsync:(NSDictionary *)options
-                    resolver:(UMPromiseResolveBlock)resolve
-                    rejecter:(UMPromiseRejectBlock)reject)
+                    resolver:(RCTPromiseResolveBlock)resolve
+                    rejecter:(RCTPromiseRejectBlock)reject)
 {
   if (@available(iOS 13.0, *)) {
     [self requestWithOptions:options
@@ -74,10 +74,10 @@ RCT_EXPORT_METHOD(requestAsync,
   }
 }
 
-RCT_EXPORT_METHOD(getCredentialStateAsync,
+RCT_EXPORT_METHOD(
                     getCredentialStateAsync:(NSString *)userID
-                                   resolver:(UMPromiseResolveBlock)resolve
-                                   rejecter:(UMPromiseRejectBlock)reject)
+                                   resolver:(RCTPromiseResolveBlock)resolve
+                                   rejecter:(RCTPromiseRejectBlock)reject)
 {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *appleIDProvider = [[ASAuthorizationAppleIDProvider alloc] init];
@@ -97,8 +97,8 @@ RCT_EXPORT_METHOD(getCredentialStateAsync,
 #pragma mark - helpers
 
 - (void)requestWithOptions:(NSDictionary *)options
-                  resolver:(UMPromiseResolveBlock)resolve
-                  rejecter:(UMPromiseRejectBlock)reject API_AVAILABLE(ios(13.0))
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject API_AVAILABLE(ios(13.0))
 {
   ASAuthorizationProviderAuthorizationOperation operation = [RNAppleAuthenticationMappings importOperation:options[@"requestedOperation"]];
   __block RNAppleAuthenticationRequest *request = [RNAppleAuthenticationRequest performOperation:operation
@@ -107,7 +107,7 @@ RCT_EXPORT_METHOD(getCredentialStateAsync,
     if (error) {
       if (error.code == 1001) {
         // User canceled authentication attempt.
-        reject(UMErrorCodeCanceled, @"The Apple authentication request has been canceled by the user.", nil);
+        reject(@"ERR_APPLE_AUTHENTICATION_REQUEST_CANCELED", @"The Apple authentication request has been canceled by the user.", nil);
       } else {
         reject(@"ERR_APPLE_AUTHENTICATION_REQUEST_FAILED", error.localizedDescription, nil);
       }

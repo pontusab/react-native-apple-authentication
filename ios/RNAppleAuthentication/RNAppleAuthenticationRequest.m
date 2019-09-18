@@ -21,8 +21,6 @@
   return self;
 }
 
-#define RNNullIfNil(value) (value ?: [NSNull null])
-
 - (void)performOperation:(ASAuthorizationProviderAuthorizationOperation)operation
 {
   ASAuthorizationAppleIDProvider* appleIDProvider = [[ASAuthorizationAppleIDProvider alloc] init];
@@ -77,13 +75,13 @@
   }
 
   NSDictionary *response = @{
-                         @"fullName": RNNullIfNil(fullName),
-                         @"email": RNNullIfNil(credential.email),
+                         @"fullName": fullName ?: [NSNull null],
+                         @"email": credential.email ?: [NSNull null],
                          @"user": credential.user,
                          @"realUserStatus": [RNAppleAuthenticationMappings exportRealUserStatus:credential.realUserStatus],
-                         @"state": RNNullIfNil(credential.state),
-                         @"authorizationCode": RNNullIfNil(authorizationCode),
-                         @"identityToken": RNNullIfNil(identityToken),
+                         @"state": credential.state ?: [NSNull null],
+                         @"authorizationCode": authorizationCode ?: [NSNull null],
+                         @"identityToken": identityToken ?: [NSNull null],
                          };
 
   if (_callback) {
