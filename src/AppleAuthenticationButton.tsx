@@ -38,9 +38,9 @@ const AppleAuthenticationButton: React.FunctionComponent<
   AppleAuthenticationButtonProps
 > = props => {
   if (!RNAppleAuthenticationButtonSignInWhite) {
-    // if (__DEV__) {
-    //   console.warn("'AppleAuthenticationButton' is not available.");
-    // }
+    if (__DEV__) {
+      console.warn("'AppleAuthenticationButton' is not available.");
+    }
     return null;
   }
 

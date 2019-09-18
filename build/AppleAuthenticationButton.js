@@ -23,9 +23,9 @@ import { AppleAuthenticationButtonStyle, AppleAuthenticationButtonType } from '.
  */
 const AppleAuthenticationButton = props => {
     if (!RNAppleAuthenticationButtonSignInWhite) {
-        // if (__DEV__) {
-        //   console.warn("'AppleAuthenticationButton' is not available.");
-        // }
+        if (__DEV__) {
+            console.warn("'AppleAuthenticationButton' is not available.");
+        }
         return null;
     }
     const { onPress, buttonStyle, buttonType, ...restProps } = props;

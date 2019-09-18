@@ -1,8 +1,8 @@
-// @import AuthenticationServices;
+@import AuthenticationServices;
 
-// API_AVAILABLE(ios(13.0))
-// @interface RNAppleAuthenticationButton : ASAuthorizationAppleIDButton
+API_AVAILABLE(ios(13.0))
+@interface RNAppleAuthenticationButton : ASAuthorizationAppleIDButton
 
-// // @property (nonatomic, copy) UMDirectEventBlock onButtonPress;
+// @property (nonatomic, copy) UMDirectEventBlock onButtonPress;
 
-// @end
+@end

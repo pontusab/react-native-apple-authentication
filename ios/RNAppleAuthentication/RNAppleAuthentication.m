@@ -6,18 +6,11 @@ static NSString *const RNAppleIDCredentialRevokedEvent = @"appleIdCredentialRevo
 
 @interface RNAppleAuthentication ()
 
-// @property (nonatomic, weak) UMModuleRegistry *moduleRegistry;
-
 @end
 
 @implementation RNAppleAuthentication
 
 RCT_EXPORT_MODULE(RNAppleAuthentication);
-
-// - (void)setModuleRegistry:(UMModuleRegistry *)moduleRegistry
-// {
-//   _moduleRegistry = moduleRegistry;
-// }
 
 - (NSArray<NSString *> *)supportedEvents
 {
