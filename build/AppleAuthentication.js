@@ -1,5 +1,6 @@
 import RNAppleAuthentication from './RNAppleAuthentication';
 import { AppleAuthenticationOperation } from './AppleAuthentication.types';
+import { CodedError, UnavailabilityError } from './utils';
 export async function isAvailableAsync() {
     if (!RNAppleAuthentication || !RNAppleAuthentication.isAvailableAsync) {
         return false;
@@ -8,7 +9,7 @@ export async function isAvailableAsync() {
 }
 export async function signInAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        console.log('expo-apple-authentication', 'signInAsync');
+        throw new UnavailabilityError('react-native-apple-authentication', 'signInAsync');
     }
     const requestOptions = {
         ...options,
@@ -18,13 +19,13 @@ export async function signInAsync(options) {
     if (!credential.authorizationCode ||
         !credential.identityToken ||
         !credential.user) {
-        console.log('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `signInAsync` is missing one or more required fields.');
+        throw new CodedError('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `signInAsync` is missing one or more required fields.');
     }
     return credential;
 }
 export async function refreshAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        console.log('expo-apple-authentication', 'refreshAsync');
+        throw new UnavailabilityError('react-native-apple-authentication', 'signOutAsync');
     }
     const requestOptions = {
         ...options,
@@ -34,13 +35,13 @@ export async function refreshAsync(options) {
     if (!credential.authorizationCode ||
         !credential.identityToken ||
         !credential.user) {
-        console.log('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `refreshAsync` is missing one or more required fields.');
+        throw new CodedError('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `refreshAsync` is missing one or more required fields.');
     }
     return credential;
 }
 export async function signOutAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        console.log('expo-apple-authentication', 'signOutAsync');
+        throw new UnavailabilityError('react-native-apple-authentication', 'signOutAsync');
     }
     const requestOptions = {
         ...options,
@@ -51,19 +52,8 @@ export async function signOutAsync(options) {
 export async function getCredentialStateAsync(user) {
     if (!RNAppleAuthentication ||
         !RNAppleAuthentication.getCredentialStateAsync) {
-        console.log('expo-apple-authentication', 'getCredentialStateAsync');
+        throw new UnavailabilityError('react-native-apple-authentication', 'getCredentialStateAsync');
     }
     return RNAppleAuthentication.getCredentialStateAsync(user);
 }
-// const RNAppleAuthenticationEventEmitter = new EventEmitter(
-//   RNAppleAuthentication
-// );
-// export function addRevokeListener(
-//   listener: AppleAuthenticationRevokeListener
-// ): Subscription {
-//   // return RNAppleAuthenticationEventEmitter.addListener(
-//   //   'appleIdCredentialRevoked',
-//   //   listener
-//   // );
-// }
 //# sourceMappingURL=AppleAuthentication.js.map

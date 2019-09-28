@@ -5,9 +5,9 @@ import {
   AppleAuthenticationSignOutOptions,
   AppleAuthenticationCredential,
   AppleAuthenticationCredentialState,
-  AppleAuthenticationOperation,
-  AppleAuthenticationRevokeListener
+  AppleAuthenticationOperation
 } from './AppleAuthentication.types';
+import { CodedError, UnavailabilityError } from './utils';
 
 export async function isAvailableAsync(): Promise<boolean> {
   if (!RNAppleAuthentication || !RNAppleAuthentication.isAvailableAsync) {
@@ -20,7 +20,10 @@ export async function signInAsync(
   options?: AppleAuthenticationSignInOptions
 ): Promise<AppleAuthenticationCredential> {
   if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-    console.log('expo-apple-authentication', 'signInAsync');
+    throw new UnavailabilityError(
+      'react-native-apple-authentication',
+      'signInAsync'
+    );
   }
   const requestOptions = {
     ...options,
@@ -32,7 +35,7 @@ export async function signInAsync(
     !credential.identityToken ||
     !credential.user
   ) {
-    console.log(
+    throw new CodedError(
       'ERR_APPLE_AUTHENTICATION_REQUEST_FAILED',
       'The credential returned by `signInAsync` is missing one or more required fields.'
     );
@@ -44,7 +47,10 @@ export async function refreshAsync(
   options: AppleAuthenticationRefreshOptions
 ): Promise<AppleAuthenticationCredential> {
   if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-    console.log('expo-apple-authentication', 'refreshAsync');
+    throw new UnavailabilityError(
+      'react-native-apple-authentication',
+      'signOutAsync'
+    );
   }
   const requestOptions = {
     ...options,
@@ -56,7 +62,7 @@ export async function refreshAsync(
     !credential.identityToken ||
     !credential.user
   ) {
-    console.log(
+    throw new CodedError(
       'ERR_APPLE_AUTHENTICATION_REQUEST_FAILED',
       'The credential returned by `refreshAsync` is missing one or more required fields.'
     );
@@ -68,7 +74,10 @@ export async function signOutAsync(
   options: AppleAuthenticationSignOutOptions
 ): Promise<AppleAuthenticationCredential> {
   if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-    console.log('expo-apple-authentication', 'signOutAsync');
+    throw new UnavailabilityError(
+      'react-native-apple-authentication',
+      'signOutAsync'
+    );
   }
   const requestOptions = {
     ...options,
@@ -84,20 +93,10 @@ export async function getCredentialStateAsync(
     !RNAppleAuthentication ||
     !RNAppleAuthentication.getCredentialStateAsync
   ) {
-    console.log('expo-apple-authentication', 'getCredentialStateAsync');
+    throw new UnavailabilityError(
+      'react-native-apple-authentication',
+      'getCredentialStateAsync'
+    );
   }
   return RNAppleAuthentication.getCredentialStateAsync(user);
 }
-
-// const RNAppleAuthenticationEventEmitter = new EventEmitter(
-//   RNAppleAuthentication
-// );
-
-// export function addRevokeListener(
-//   listener: AppleAuthenticationRevokeListener
-// ): Subscription {
-//   // return RNAppleAuthenticationEventEmitter.addListener(
-//   //   'appleIdCredentialRevoked',
-//   //   listener
-//   // );
-// }

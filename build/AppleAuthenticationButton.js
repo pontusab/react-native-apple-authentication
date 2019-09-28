@@ -29,7 +29,6 @@ const AppleAuthenticationButton = props => {
         return null;
     }
     const { onPress, buttonStyle, buttonType, ...restProps } = props;
-    console.log('onPress', onPress);
     const AppleAuthenticationButtonComponent = selectButtonComponent(buttonType, buttonStyle);
     return (<AppleAuthenticationButtonComponent onPress={onPress} {...restProps}/>);
 };
