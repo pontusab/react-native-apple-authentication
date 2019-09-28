@@ -52,10 +52,7 @@ const AppleAuthenticationButton: React.FunctionComponent<
   );
 
   return (
-    <AppleAuthenticationButtonComponent
-      onButtonPress={onPress}
-      {...restProps}
-    />
+    <AppleAuthenticationButtonComponent onPress={onPress} {...restProps} />
   );
 };
 

@@ -8,7 +8,7 @@ export async function isAvailableAsync() {
 }
 export async function signInAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        // throw new UnavailabilityError('expo-apple-authentication', 'signInAsync');
+        console.log('expo-apple-authentication', 'signInAsync');
     }
     const requestOptions = {
         ...options,
@@ -18,16 +18,13 @@ export async function signInAsync(options) {
     if (!credential.authorizationCode ||
         !credential.identityToken ||
         !credential.user) {
-        // throw new CodedError(
-        //   'ERR_APPLE_AUTHENTICATION_REQUEST_FAILED',
-        //   'The credential returned by `signInAsync` is missing one or more required fields.'
-        // );
+        console.log('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `signInAsync` is missing one or more required fields.');
     }
     return credential;
 }
 export async function refreshAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        // throw new UnavailabilityError('expo-apple-authentication', 'refreshAsync');
+        console.log('expo-apple-authentication', 'refreshAsync');
     }
     const requestOptions = {
         ...options,
@@ -37,16 +34,13 @@ export async function refreshAsync(options) {
     if (!credential.authorizationCode ||
         !credential.identityToken ||
         !credential.user) {
-        // throw new CodedError(
-        //   'ERR_APPLE_AUTHENTICATION_REQUEST_FAILED',
-        //   'The credential returned by `refreshAsync` is missing one or more required fields.'
-        // );
+        console.log('ERR_APPLE_AUTHENTICATION_REQUEST_FAILED', 'The credential returned by `refreshAsync` is missing one or more required fields.');
     }
     return credential;
 }
 export async function signOutAsync(options) {
     if (!RNAppleAuthentication || !RNAppleAuthentication.requestAsync) {
-        // throw new UnavailabilityError('expo-apple-authentication', 'signOutAsync');
+        console.log('expo-apple-authentication', 'signOutAsync');
     }
     const requestOptions = {
         ...options,
@@ -57,10 +51,7 @@ export async function signOutAsync(options) {
 export async function getCredentialStateAsync(user) {
     if (!RNAppleAuthentication ||
         !RNAppleAuthentication.getCredentialStateAsync) {
-        // throw new UnavailabilityError(
-        //   'expo-apple-authentication',
-        //   'getCredentialStateAsync'
-        // );
+        console.log('expo-apple-authentication', 'getCredentialStateAsync');
     }
     return RNAppleAuthentication.getCredentialStateAsync(user);
 }

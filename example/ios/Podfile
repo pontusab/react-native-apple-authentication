@@ -28,7 +28,7 @@ target 'example' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   pod 'RNAppleAuthentication', :path => '../../ios'
-
+ 
   target 'exampleTests' do
     inherit! :search_paths
     # Pods for testing

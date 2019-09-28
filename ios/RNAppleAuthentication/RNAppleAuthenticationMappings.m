@@ -1,4 +1,3 @@
-
 #import <RNAppleAuthentication/RNAppleAuthenticationMappings.h>
 
 @implementation RNAppleAuthenticationMappings
