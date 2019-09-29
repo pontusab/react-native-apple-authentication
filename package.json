@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "SignIn With Apple",
   "homepage": "https://github.com/pontusab/react-native-apple-authentication",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
