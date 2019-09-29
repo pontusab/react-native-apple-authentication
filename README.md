@@ -2,6 +2,8 @@ This library provides Apple authentication for iOS standalone apps in the manage
 
 ## Installation
 
+`npm install @pontusab/react-native-apple-authentication`
+`yarn @pontusab/react-native-apple-authentication`
  
 ## Setup
 
