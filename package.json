@@ -1,7 +1,7 @@
 {
   "name": "@pontusab/react-native-apple-authentication",
   "author": "Pontus Abrahamsson",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SignIn With Apple",
   "homepage": "https://github.com/pontusab/react-native-apple-authentication",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
