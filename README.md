@@ -1,5 +1,10 @@
 This library provides Apple authentication for iOS standalone apps in the managed and bare workflows. Beginning with iOS 13, any app that includes third-party authentication options **must** provide Apple authentication as an option in order to comply with App Store Review guidelines. Learn more about Apple authentication on the ["Sign In with Apple" website](https://developer.apple.com/sign-in-with-apple/).
 
+
+![Image of buttons](https://github.com/pontusab/react-native-apple-authentication/buttons.png)
+
+
+
 ## Installation
 
 NPM:
