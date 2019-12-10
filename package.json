@@ -1,10 +1,9 @@
 {
   "name": "@pontusab/react-native-apple-authentication",
   "author": "Pontus Abrahamsson",
-  "version": "1.0.1",
-  "description": "SignIn With Apple",
+  "version": "1.0.3",
+  "description": "Sign in With Apple",
   "homepage": "https://github.com/pontusab/react-native-apple-authentication",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": "git://github.com/pontusab/react-native-apple-authentication.git",
   "main": "build/index.js",
   "types": "build/index.d.ts",
